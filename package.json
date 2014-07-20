@@ -1,0 +1,15 @@
+{
+  "name": "UnityCharacterExample",
+  "description": "An example that spawns characters in Unity",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+  },
+  "happyFunTimes": {
+    "gameId": "unitycharacterexample",
+    "category": "example",
+    "gameType": "Unity3D",
+    "apiVersion": "0.0.0",
+    "minPlayers": 1
+  }
+}
