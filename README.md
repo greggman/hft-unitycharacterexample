@@ -1,11 +1,11 @@
-JumpJump
-========
+HFT-Unity Character Example
+===========================
 
-This is a sample game for the [HappyFunTimes party games system](http://greggman.github.io/HappyFunTimes).
+This is a sample Unity3D game for the [HappyFunTimes party games system](http://greggman.github.io/HappyFunTimes).
 
-<img src="screenshot.png />
+<img src="screenshot.png" />
 
-It's a simple platformer.
+It simply shows spawning 3d characters in unity and controlling them through happyfuntimes.
 
 Cloning
 -------
@@ -24,7 +24,8 @@ If you clone this you'll need follow the following steps
 3.  clone this repo
 4.  After cloning cd to the folder you just cloned into and type `bower install`
 5.  edit `package.json` and change the `gameId` to some other id.
-6.  type `hft add` which will add this to happyFunTimes.
+6.  set the `gameId` in the example to match the one you set in step 5.
+7.  type `hft add` which will add this to happyFunTimes.
 
 
 
