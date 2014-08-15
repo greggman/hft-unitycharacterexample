@@ -52,9 +52,7 @@ var main = function(
     return document.getElementById(id);
   }
 
-  g_client = new GameClient({
-    gameId: "unitycharacterexample",
-  });
+  g_client = new GameClient();
 
   function handleScore() {
   };
