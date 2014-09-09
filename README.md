@@ -7,6 +7,8 @@ This is a sample Unity3D game for the [HappyFunTimes party games system](http://
 
 It simply shows spawning 3d characters in unity and controlling them through happyfuntimes.
 
+If you just want to play go to http://superhappyfuntimes.net/game/unitycharacterexample
+
 Cloning
 -------
 

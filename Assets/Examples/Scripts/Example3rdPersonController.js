@@ -99,7 +99,7 @@ private var isControllable = true;
 
 private var rand : System.Random = new System.Random();
 
-function InitalizeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
+function InitializeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	_netPlayer = spawnInfo.netPlayer;
 	_netPlayer.OnDisconnect += Remove;
 	_netPlayer.RegisterCmdHandler(OnPad);
