@@ -101,18 +101,18 @@ private var rand : System.Random = new System.Random();
 
 function InitalizeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	_netPlayer = spawnInfo.netPlayer;
-    _netPlayer.OnDisconnect += Remove;
-    _netPlayer.RegisterCmdHandler(OnPad);
-    _netPlayer.RegisterCmdHandler(OnSetColor);
-    _netPlayer.RegisterCmdHandler(OnSetName);
-    _netPlayer.RegisterCmdHandler(OnBusy);
+	_netPlayer.OnDisconnect += Remove;
+	_netPlayer.RegisterCmdHandler(OnPad);
+	_netPlayer.RegisterCmdHandler(OnSetColor);
+	_netPlayer.RegisterCmdHandler(OnSetName);
+	_netPlayer.RegisterCmdHandler(OnBusy);
 
 	_padEmu = new DPadEmuJS();
 
-    var x = rand.Next(-10, 10);
-    var y = 1.0f; // puts him above ground
-    var z = rand.Next(-10, 10);
-    transform.localPosition = new Vector3(x, y, z);
+	var x = rand.Next(-10, 10);
+	var y = 1.0f; // puts him above ground
+	var z = rand.Next(-10, 10);
+	transform.localPosition = new Vector3(x, y, z);
 
 	SetName(spawnInfo.name);
 }
