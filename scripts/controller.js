@@ -30,15 +30,23 @@
  */
 "use strict";
 
-var main = function(
+// Start the main app logic.
+requirejs([
+    'hft/commonui',
+    'hft/gameclient',
+    'hft/misc/dpad',
+    'hft/misc/input',
+    'hft/misc/misc',
+    'hft/misc/mobilehacks',
+    'hft/misc/touch',
+  ], function(
     CommonUI,
     GameClient,
     DPad,
     Input,
     Misc,
     MobileHacks,
-    Touch,
-    AudioManager) {
+    Touch) {
   var g_client;
   var g_audioManager;
 
@@ -66,8 +74,6 @@ var main = function(
   var color = Misc.randCSSColor();
   g_client.sendCmd('setColor', { color: color });
   document.body.style.backgroundColor = color;
-
-  g_audioManager = new AudioManager();
 
   var dpadSize = 160;
   var dpads = [
@@ -105,19 +111,6 @@ var main = function(
     ],
   });
 
-};
+});
 
-// Start the main app logic.
-requirejs([
-    'hft/commonui',
-    'hft/gameclient',
-    'hft/misc/dpad',
-    'hft/misc/input',
-    'hft/misc/misc',
-    'hft/misc/mobilehacks',
-    'hft/misc/touch',
-    '../bower_components/hft-utils/dist/audio',
-  ],
-  main
-);
 
