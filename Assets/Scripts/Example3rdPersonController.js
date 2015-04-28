@@ -102,10 +102,10 @@ private var rand : System.Random = new System.Random();
 function InitializeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	_netPlayer = spawnInfo.netPlayer;
 	_netPlayer.OnDisconnect += Remove;
+	_netPlayer.OnNameChange += OnSetName;
+
 	_netPlayer.RegisterCmdHandler(OnPad);
 	_netPlayer.RegisterCmdHandler(OnSetColor);
-	_netPlayer.RegisterCmdHandler(OnSetName);
-	_netPlayer.RegisterCmdHandler(OnBusy);
 
 	_padEmu = new DPadEmuJS();
 
@@ -114,7 +114,7 @@ function InitializeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	var z = rand.Next(-10, 10);
 	transform.localPosition = new Vector3(x, y, z);
 
-	SetName(spawnInfo.name);
+	SetName(_netPlayer.Name);
 }
 
 @HappyFunTimes.CmdName("pad")
@@ -126,16 +126,6 @@ class MessagePad extends HappyFunTimes.MessageCmdData {
 @HappyFunTimes.CmdName("setColor")
 class MessageSetColor extends HappyFunTimes.MessageCmdData {
 	var color : String;
-};
-
-@HappyFunTimes.CmdName("setName")
-class MessageSetName extends HappyFunTimes.MessageCmdData {
-	var name : String;
-};
-
-@HappyFunTimes.CmdName("busy")
-class MessageBusy extends HappyFunTimes.MessageCmdData {
-	var busy : boolean;
 };
 
 function Start () {
@@ -181,18 +171,8 @@ function OnGUI() {
 	GUI.Box(_nameRect, _playerName, _guiStyle);
 }
 
-function OnSetName(data : MessageSetName) {
-	if (data.name.length > 0) {
-		SetName(data.name);
-	} else {
-		var msg = new MessageSetName();
-		msg.name = _playerName;
-		_netPlayer.SendCmd(msg);
-	}
-}
-
-function OnBusy(data : MessageBusy) {
-	// handle busy message if we care.
+function OnSetName() {
+	SetName(_netPlayer.Name);
 }
 
 function Awake ()
