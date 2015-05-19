@@ -28,50 +28,54 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+/* the area that contains the visual representation of our dpads */
 #dpads {
+  /* make the dpads area fill the browser */
   width: 100%;
   height: 100%;
+
+  /* make positioned children of #dpads use this as their origin */
   position: relative;
-
-  gdisplay: flex;
-  gdisplay: -webkit-flex;
-
-  gflex-flow: row nowrap;
-  g-webkit-flex-flow: row nowrap;
-
-  gjustify-content: space-between;
-  galign-content: center;
-  galign-items: center;
-  g-webkit-justify-content: space-between;
-  g-webkit-align-content: center;
-  g-webkit-align-items: center;
-  gborder: 1px solid red;
 }
+
+/* an invisible area that covers everything and receives all input */
 #dpadinput {
+    /* fill the browser */
     width: 100%;
     height: 100%;
+    /* position at the top */
     position: absolute;
     left: 0px;
     top: 0px;
+
+    /* make us appear over other stuff */
     z-index: 2;
+
+    /* make it so dragging your finger or the mouse on
+       this area does not start selecting stuff */
     -moz-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
     user-select: none;
 }
 #dpadleft, #dpadright {
+  /* these are relative to #dpads */
   position: absolute;
   width: 160px;
 }
 #dpads canvas {
+    /* the dpads are each drawn with a canvas */
     width: 160px;
     height: 160px;
 }
 #dpadleft {
+  /* position the left pad */
   left: 2em;
   bottom: 3em;
 }
 #dpadright {
+  /* position the right pad */
   right: 2em;
   bottom: 3em;
 }

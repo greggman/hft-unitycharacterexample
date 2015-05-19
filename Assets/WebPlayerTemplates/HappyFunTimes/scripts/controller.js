@@ -52,9 +52,11 @@ requirejs([
 
   var globals = {
     debug: false,
+    orientation: "landscape-primary",
   };
   Misc.applyUrlSettings(globals);
   MobileHacks.fixHeightHack();
+  MobileHacks.disableContextMenu();
   MobileHacks.adjustCSSBasedOnPhone([
     {
       test: MobileHacks.isIOS8OrNewerAndiPhone4OrIPhone5,
@@ -94,10 +96,11 @@ requirejs([
     new DPad({size: dpadSize, element: $("dpadright")}),
   ];
 
-  var sendPad = function(e) {
+  function sendPad(e) {
     if (globals.debug) {
       console.log("pad: " + e.pad + " dir: " + e.info.symbol + " (" + e.info.direction + ")");
     }
+    // Draw the dpad
     dpads[e.pad].draw(e.info);
     g_client.sendCmd('pad', {pad: e.pad, dir: e.info.direction});
   };
@@ -107,9 +110,21 @@ requirejs([
   Input.setupKeyboardDPadKeys(sendPad);
   var container = $("dpadinput");
   Touch.setupVirtualDPads({
+
+    // the container that receives all input
     inputElement: container,
+
+    // the function to call when we get inupt
     callback: sendPad,
+
+    // whether or not the center stays fixed. If false
+    // the system will assume the place the player touchs
+    // is the center, they then have to move their finger
+    // from that spot to move. That doesn't seem to work
+    // well or maybe it just needs some iteration
     fixedCenter: true,
+
+    // an array of pads and were their center is.
     pads: [
       {
         referenceElement: $("dpadleft"),

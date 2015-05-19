@@ -107,8 +107,6 @@ function InitializeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	_netPlayer.RegisterCmdHandler(OnPad);
 	_netPlayer.RegisterCmdHandler(OnSetColor);
 
-	_padEmu = new DPadEmuJS();
-
 	var x = rand.Next(-10, 10);
 	var y = 1.0f; // puts him above ground
 	var z = rand.Next(-10, 10);
@@ -117,12 +115,14 @@ function InitializeNetPlayer(spawnInfo : HappyFunTimes.SpawnInfo) {
 	SetName(_netPlayer.Name);
 }
 
+/* Defines a class to associate with the `pad` command */
 @HappyFunTimes.CmdName("pad")
 class MessagePad extends HappyFunTimes.MessageCmdData {
 	var pad : int;
 	var dir : int;
 };
 
+/* Defines a class to associate with the `setColor` command */
 @HappyFunTimes.CmdName("setColor")
 class MessageSetColor extends HappyFunTimes.MessageCmdData {
 	var color : String;
