@@ -128,13 +128,9 @@ requirejs([
     pads: [
       {
         referenceElement: $("dpadleft"),
-        offsetX: dpadSize / 2,
-        offsetY: dpadSize / 2,
       },
       {
         referenceElement: $("dpadright"),
-        offsetX: dpadSize / 2,
-        offsetY: dpadSize / 2,
       },
     ],
   });
